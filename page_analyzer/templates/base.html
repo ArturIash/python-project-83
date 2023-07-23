@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Study project#3 for Hexlet.io">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <title>Анализатор страниц</title>
+    </head>
+    <body class="min-vh-100 d-flex flex-column">
+        <header class="flex-shrink-1">
+            <nav class="navbar navbar-dark bg-dark px-4">
+                <a href="{{ url_for('index') }}" class="navbar-brand">Анализатор страниц</a>
+                <div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Сайты</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                    <div class="alert {{ category }}" role="alert">
+                        {{ message }}
+                    </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        <main class="flex-grow-1">
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="border-top py-3 mt-5 flex-shrink-0">
+            <div class="container-lg">
+                <div class="text-center">
+                    <a href="https://ru.hexlet.io/" target="_blank">Hexlet</a>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    </body>
+</html>
